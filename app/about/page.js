@@ -62,7 +62,7 @@ export default function AboutPage() {
       <section
         className="relative flex items-center justify-center min-h-screen bg-fixed bg-cover bg-center overflow-hidden"
         style={{
-          backgroundImage: `url('./forest3.jpg')`,
+          backgroundImage: `url('./forsetbg.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
