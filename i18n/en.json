@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "chat": "Chat",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Discover the Living Forest",
+    "subtitle": "Walk among ancient trees, meet forest dwellers, and let the spirit of the woods guide you.",
+    "cta": "Start Exploring"
+  },
+  "explore": {
+    "title": "Explore the Forest",
+    "filterAll": "All",
+    "filterAnimals": "Animals",
+    "filterBirds": "Birds",
+    "filterPlants": "Plants"
+  },
+  "chat": {
+    "title": "Chat with the Forest Spirit",
+    "placeholder": "Ask something about the forest...",
+    "spiritName": "Forest Spirit",
+    "spiritReplies": [
+      "The forest whispers tales older than time.",
+      "Listen to the rustle of leaves; they carry secrets.",
+      "Every tree is a library of wisdom.",
+      "Nature does not hurry, yet everything is accomplished.",
+      "The roots of the forest are deeply connected."
+    ]
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "contact": "Contact",
+    "follow": "Follow us"
+  },
+  "about": {
+    "title": "About the Forest Explorer",
+    "text": "We are a community of nature lovers dedicated to sharing the beauty and wisdom of the forest. Our mission is to connect people with the wild through storytelling, exploration, and conservation awareness."
+  },
+  "services": {
+    "title": "Our Services",
+    "items": [
+      { "title": "Guided Tours", "desc": "Walk with expert naturalists." },
+      { "title": "Workshops", "desc": "Learn forest crafts and skills." },
+      { "title": "Conservation", "desc": "Join our tree-planting missions." }
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send"
+  },
+  "faq": {
+    "title": "Frequent Questions",
+    "questions": [
+      { "q": "How can I join a tour?", "a": "Simply sign up through our contact page." },
+      { "q": "Is the forest safe?", "a": "Yes, our guides ensure all safety measures." }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "text": "We respect your privacy. This policy explains how we handle your data..."
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "text": "By using this website you agree to these terms..."
+  },
+  "home_sections": {
+    "hero": { "title": "The Forest Beckons", "subtitle": "Enter a world where nature speaks and adventure awaits.", "cta": "Start Exploring" },
+    "why": {
+      "title": "Why Choose the Wild?",
+      "cards": [
+        { "title": "Pure Air", "desc": "Breathe the freshest oxygen straight from ancient trees." },
+        { "title": "Majestic Wildlife", "desc": "Encounter creatures you've only seen in dreams." },
+        { "title": "Soulful Peace", "desc": "Find the silence that heals your heart." }
+      ]
+    },
+    "animals": { "title": "Meet the Forest Animals", "desc": "Get close to the untamed spirits of the woods." },
+    "birds": { "title": "Symphony of Birds", "desc": "Listen to melodies that only the forest can compose." },
+    "plants": { "title": "Realm of Plants", "desc": "From delicate moss to towering giants—nature’s hidden kingdom." },
+    "testimonials": {
+      "title": "Voices of the Forest",
+      "quotes": [
+        { "text": "An unforgettable experience! The forest felt like home.", "author": "Marie" },
+        { "text": "Truly magical. I left with a full heart.", "author": "Pierre" }
+      ]
+    },
+    "quote": "Nature does not belong to us, we belong to nature.",
+    "whispers": {
+      "title": "Forest Whispers",
+      "desc": "Every rustle of leaves, every distant bird call, carries a message only the heart understands. Sit quietly, and the forest will speak."
+    },
+    "canopy": { "title": "Sunlit Canopy" },
+    "kit": {
+      "title": "Adventurer's Kit",
+      "items": [
+        { "item": "Boots", "desc": "Sturdy shoes for rugged trails" },
+        { "item": "Binoculars", "desc": "Spot wildlife from a distance" },
+        { "item": "Water Bottle", "desc": "Stay hydrated on long walks" },
+        { "item": "Journal", "desc": "Record your forest discoveries" }
+      ]
+    },
+    "echoes": {
+      "title": "Echoes of the Wild",
+      "quote": "The forest does not need you to speak. It only asks that you listen.",
+      "hint": "Close your eyes. Hear the stream, the wind, the wings."
+    },
+    "cta_section": { "title": "Begin Your Adventure", "cta": "Talk to Spirit" }
+  }
+}

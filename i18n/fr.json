@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "explore": "Explorer",
+    "chat": "Discussion",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "language": "Langue"
+  },
+  "hero": {
+    "title": "Découvrez la Forêt Vivante",
+    "subtitle": "Marchez parmi les arbres anciens, rencontrez les habitants de la forêt et laissez l'esprit des bois vous guider.",
+    "cta": "Commencer l'exploration"
+  },
+  "explore": {
+    "title": "Explorez la Forêt",
+    "filterAll": "Tous",
+    "filterAnimals": "Animaux",
+    "filterBirds": "Oiseaux",
+    "filterPlants": "Plantes"
+  },
+  "chat": {
+    "title": "Discutez avec l'Esprit de la Forêt",
+    "placeholder": "Posez une question sur la forêt...",
+    "spiritName": "Esprit de la Forêt",
+    "spiritReplies": [
+      "La forêt murmure des contes plus anciens que le temps.",
+      "Écoutez le bruissement des feuilles ; elles portent des secrets.",
+      "Chaque arbre est une bibliothèque de sagesse.",
+      "La nature ne se presse pas, pourtant tout est accompli.",
+      "Les racines de la forêt sont profondément connectées."
+    ]
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "explore": "Explorer",
+    "contact": "Contact",
+    "follow": "Suivez-nous"
+  },
+  "about": {
+    "title": "À propos de Forest Explorer",
+    "text": "Nous sommes une communauté de passionnés de nature dédiée au partage de la beauté et de la sagesse de la forêt. Notre mission est de connecter les gens au monde sauvage à travers des histoires, l'exploration et la sensibilisation à la conservation."
+  },
+  "services": {
+    "title": "Nos Services",
+    "items": [
+      { "title": "Visites Guidées", "desc": "Marchez avec des naturalistes experts." },
+      { "title": "Ateliers", "desc": "Apprenez l'artisanat et les compétences forestières." },
+      { "title": "Conservation", "desc": "Rejoignez nos missions de plantation d'arbres." }
+    ]
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "email": "E-mail",
+    "message": "Message",
+    "send": "Envoyer"
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "questions": [
+      { "q": "Comment puis-je rejoindre une visite ?", "a": "Inscrivez-vous simplement via notre page de contact." },
+      { "q": "La forêt est-elle sûre ?", "a": "Oui, nos guides assurent toutes les mesures de sécurité." }
+    ]
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "text": "Nous respectons votre vie privée. Cette politique explique comment nous traitons vos données..."
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "text": "En utilisant ce site, vous acceptez ces conditions..."
+  },
+  "home_sections": {
+    "hero": { "title": "La Forêt Vous Appelle", "subtitle": "Entrez dans un monde où la nature parle et l'aventure vous attend.", "cta": "Commencer l'exploration" },
+    "why": {
+      "title": "Pourquoi Choisir la Nature Sauvage ?",
+      "cards": [
+        { "title": "Air Pur", "desc": "Respirez l'oxygène le plus frais directement des arbres centenaires." },
+        { "title": "Faune Majestueuse", "desc": "Rencontrez des créatures que vous n'avez vues qu'en rêve." },
+        { "title": "Paix Intérieure", "desc": "Trouvez le silence qui guérit votre cœur." }
+      ]
+    },
+    "animals": { "title": "Rencontrez les Animaux de la Forêt", "desc": "Approchez-vous des esprits indomptés des bois." },
+    "birds": { "title": "Symphonie des Oiseaux", "desc": "Écoutez les mélodies que seule la forêt peut composer." },
+    "plants": { "title": "Royaume des Plantes", "desc": "De la mousse délicate aux géants imposants — le royaume caché de la nature." },
+    "testimonials": {
+      "title": "Voix de la Forêt",
+      "quotes": [
+        { "text": "Une expérience inoubliable ! La forêt m'a fait me sentir chez moi.", "author": "Marie" },
+        { "text": "Vraiment magique. Je suis reparti le cœur plein.", "author": "Pierre" }
+      ]
+    },
+    "quote": "La nature ne nous appartient pas, nous appartenons à la nature.",
+    "whispers": {
+      "title": "Murmures de la Forêt",
+      "desc": "Chaque bruissement de feuille, chaque chant d'oiseau lointain, porte un message que seul le cœur comprend. Asseyez-vous en silence, et la forêt vous parlera."
+    },
+    "canopy": { "title": "Canopée Ensoleillée" },
+    "kit": {
+      "title": "Kit de l'Aventurier",
+      "items": [
+        { "item": "Bottes", "desc": "Des chaussures solides pour les sentiers accidentés" },
+        { "item": "Jumelles", "desc": "Observez la faune à distance" },
+        { "item": "Gourde", "desc": "Restez hydraté lors de longues promenades" },
+        { "item": "Journal", "desc": "Notez vos découvertes forestières" }
+      ]
+    },
+    "echoes": {
+      "title": "Échos de la Nature Sauvage",
+      "quote": "La forêt n'a pas besoin que vous parliez. Elle demande seulement que vous écoutiez.",
+      "hint": "Fermez les yeux. Écoutez le ruisseau, le vent, les ailes."
+    },
+    "cta_section": { "title": "Commencez Votre Aventure", "cta": "Parler à l'Esprit" }
+  }
+}

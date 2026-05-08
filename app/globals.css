@@ -4,7 +4,29 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+/* پتوں کے گرنے کی اینیمیشن */
+@keyframes leaf-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.animate-leaf-fall {
+  animation: leaf-fall linear infinite;
+}
 
+/* لوڈر کے گھومنے کی اینیمیشن */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
