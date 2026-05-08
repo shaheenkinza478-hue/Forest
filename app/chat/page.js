@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
- import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/hooks/useLanguage';
 import { allItems } from '@/data/forestData';
 import {
   ArrowRight,
@@ -176,9 +176,14 @@ export default function ChatPage() {
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const bottomRef = useRef(null);
+  const chatContainerRef = useRef(null);
 
-  // خودکار اسکرول بند
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   const handleSend = () => {
     if (!input.trim()) return;
     const userMsg = input.trim();
@@ -236,7 +241,6 @@ export default function ChatPage() {
         {/* 🌿 گرتے پتے */}
         <FloatingLeaves />
         <div ref={ref1} className={`relative z-10 text-center text-white max-w-5xl px-4 sm:px-6 -mt-20 ${revealClass(vis1)}`}>
-           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-2xl">
             {t('chat.title') || 'Chat with the Forest Spirit'}
           </h1>
@@ -263,7 +267,11 @@ export default function ChatPage() {
               </div>
             </div>
 
-            <div className="h-[320px] overflow-y-auto p-6 space-y-6 bg-gradient-to-b from-green-50/50 to-white">
+            {/* Chat messages container with custom scrollbar class */}
+            <div
+              ref={chatContainerRef}
+              className="custom-scrollbar h-[320px] overflow-y-auto p-6 space-y-6 bg-gradient-to-b from-green-50/50 to-white"
+            >
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-3 ${msg.isUser ? 'justify-end' : 'justify-start'}`}>
                   {!msg.isUser && (
@@ -308,7 +316,6 @@ export default function ChatPage() {
                   </div>
                 </div>
               )}
-              <div ref={bottomRef} />
             </div>
 
             <div className="border-t border-green-100 p-4 flex gap-3 bg-white">
@@ -468,7 +475,7 @@ export default function ChatPage() {
         </div>
       </section>
 
-      {/* 🌿 گرتے پتوں کی اینیمیشن CSS */}
+      {/* 🌿 گرتے پتوں کی اینیمیشن + کسٹم اسکرول بار */}
       <style jsx global>{`
         @keyframes leaf-fall {
           0% {
@@ -482,6 +489,28 @@ export default function ChatPage() {
         }
         .animate-leaf-fall {
           animation: leaf-fall linear infinite;
+        }
+
+        /* ===== Custom scrollbar for chat messages ===== */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f0fdf4;   /* green‑50 */
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #22c55e;   /* green‑600 */
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #16a34a;   /* green‑700 */
+        }
+
+        /* Firefox scrollbar */
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #22c55e #f0fdf4;
         }
       `}</style>
     </div>

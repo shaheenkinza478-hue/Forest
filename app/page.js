@@ -141,32 +141,51 @@ export default function HomePage() {
 
   return (
     <div className="bg-white">
-      {/* 1. HERO */}
-      <section
-        className="relative flex items-center justify-center min-h-screen bg-cover bg-fixed bg-center overflow-hidden"
-        style={{
-          backgroundImage: `url('./forsetbg.jpg')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-        <FloatingLeaves />
-        <div ref={ref1} className={`relative z-10 text-center text-white max-w-4xl px-4 ${revealClass(vis1)}`}>
-          <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-lg min-h-[1.5em]">
-            {typedHeroTitle}
-            <span className="inline-block w-[3px] h-[0.9em] bg-green-300 ml-1 animate-pulse align-middle" />
-          </h1>
-          <p className="mt-6 text-lg md:text-xl drop-shadow">
-            {t('home_sections.hero.subtitle') || 'Enter a world where nature speaks and adventure awaits.'}
-          </p>
-          <div className="mt-10">
-            <Link href={ROUTES.EXPLORE}>
-              <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-2xl transition-transform hover:scale-105">
-                {t('home_sections.hero.cta') || 'Start Exploring'} <ArrowRight size={20} />
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* 1. HERO – video background */}
+<section className="relative flex items-center justify-center min-h-screen overflow-hidden">
+  {/* Forest video */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute  w-full h-full object-cover"
+  >
+    <source
+      src="./bgv.mp4"
+      type="video/mp4"
+    />
+    {/* Fallback image agar video load na ho */}
+    <img
+      src="./forsetbg.jpg"
+      alt="Forest fallback"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  </video>
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black/40" />
+
+  {/* 🌿 گرتے پتے */}
+  <FloatingLeaves />
+
+  <div ref={ref1} className={`relative z-10 text-center text-white max-w-4xl px-4 ${revealClass(vis1)}`}>
+    <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-lg min-h-[1.5em]">
+      {typedHeroTitle}
+      <span className="inline-block w-[3px] h-[0.9em] bg-green-300 ml-1 animate-pulse align-middle" />
+    </h1>
+    <p className="mt-6 text-lg md:text-xl drop-shadow">
+      {t('home_sections.hero.subtitle') || 'Enter a world where nature speaks and adventure awaits.'}
+    </p>
+    <div className="mt-10">
+      <Link href={ROUTES.EXPLORE}>
+        <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-2xl transition-transform hover:scale-105">
+          {t('home_sections.hero.cta') || 'Start Exploring'} <ArrowRight size={20} />
+        </button>
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* 2. WHY CHOOSE THE WILD */}
       <section className="py-20 bg-gradient-to-b from-green-50 to-white">
