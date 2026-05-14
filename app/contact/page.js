@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
-import FloatingLeaves from '@/components/common/FloatingLeaves';   // ✅ import
+import FloatingLeaves from '@/components/common/FloatingLeaves';
 import {
   ArrowRight,
   MapPin,
@@ -12,6 +12,10 @@ import {
   Leaf,
   Quote,
   Star,
+  Sparkles,
+  Clock,
+  Users,
+  Heart,
 } from 'lucide-react';
 import Link from 'next/link';
 import { ROUTES } from '@/constants/routes';
@@ -36,9 +40,6 @@ function useScrollReveal(threshold = 0.15) {
   return [ref, isVisible];
 }
 
-// ❌ Local FloatingLeaves function removed
-// ❌ FOREST_IMAGES array removed – no modal images needed for contact cards
-
 export default function ContactPage() {
   const { t } = useLanguage();
 
@@ -46,9 +47,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [successModal, setSuccessModal] = useState(false);
 
-  // Contact card modals ab nahi hain, isliye modal state bhi reduced
-  // Testimonial cards still use modal? They also use openInfoModal. We'll keep modal for testimonials but simplify.
-  // We'll keep modal state and function for testimonials only.
+  // ----- Testimonial modal state -----
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
@@ -83,6 +82,37 @@ export default function ContactPage() {
 
   const closeSuccess = () => setSuccessModal(false);
 
+  // ----- Animated counters for Stats (only for 100%) -----
+  const [count100, setCount100] = useState(0);
+  const statsRef = useRef(null);
+  const hasStartedRef = useRef(false);
+
+  useEffect(() => {
+    const node = statsRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStartedRef.current) {
+          hasStartedRef.current = true;
+          let step = 0;
+          const totalSteps = 30;
+          const interval = setInterval(() => {
+            step++;
+            const progress = step / totalSteps;
+            setCount100(Math.round(100 * progress));
+            if (step >= totalSteps) {
+              clearInterval(interval);
+              setCount100(100);
+            }
+          }, 40);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   // ----- Refs & visibility -----
   const [ref1, vis1] = useScrollReveal();
   const [ref2, vis2] = useScrollReveal();
@@ -100,26 +130,35 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white text-gray-800">
-      {/* 1. HERO */}
+      {/* ==================== HERO ==================== */}
       <section
         className="relative flex items-center justify-center min-h-screen bg-fixed bg-cover bg-center overflow-hidden"
         style={{
-          backgroundImage: `url(' ./forset.jpg')`,
+          backgroundImage: `url('./forsettt1.jpg')`, // HD forest
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
         <FloatingLeaves />
-        <div ref={ref1} className={`relative z-10 text-center text-white max-w-5xl px-4 sm:px-6 -mt-20 ${revealClass(vis1)}`}>
-           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-2xl">
+        <div ref={ref1} className={`relative z-10 text-center text-white max-w-4xl px-4 sm:px-6 -mt-20 ${revealClass(vis1)}`}>
+        
+          <h1 className="text-4xl  md:text-5xl font-extrabold tracking-tight drop-shadow-2xl">
             {t('contact.title') || 'Get in Touch'}
           </h1>
-          <p className="mt-4 text-base sm:text-lg md:text-xl text-green-100 max-w-3xl mx-auto drop-shadow">
+          <p className="mt-4 text-lg sm:text-xl text-green-100 max-w-3xl mx-auto drop-shadow">
             We’d love to hear from you — whether it’s a question, a booking, or a story from the wild.
           </p>
+          <div className="mt-8">
+            <a
+              href="#contact-form"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 text-lg rounded-xl shadow-xl transition-transform hover:scale-105 font-semibold"
+            >
+              <ArrowRight size={20} /> Send a Message
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* 2. REACH US DIRECTLY – ab sirf hover, no modal */}
+      {/* ==================== REACH US DIRECTLY (glass cards, no modals) ==================== */}
       <section className="py-20 bg-white">
         <div ref={ref2} className={`max-w-7xl mx-auto px-4 sm:px-6 text-center ${revealClass(vis2)}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-12">
@@ -148,26 +187,28 @@ export default function ContactPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="group p-8 rounded-2xl bg-green-50 hover:bg-green-200 border border-transparent hover:border-green-400 shadow-md hover:shadow-xl transition-all duration-300"
+                className="group relative p-8 rounded-3xl bg-white/70 backdrop-blur-sm border border-green-100 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                <item.icon className="mx-auto text-green-700 w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-semibold text-gray-800 group-hover:text-green-900">{item.title}</h3>
-                <p className="mt-2 text-gray-600 group-hover:text-gray-800">{item.desc}</p>
-                <p className="text-sm text-green-600 mt-1 group-hover:text-green-800">{item.extra}</p>
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-green-600 text-white rounded-full p-4 shadow-lg group-hover:bg-green-700 transition-colors">
+                  <item.icon size={28} />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-2 group-hover:text-green-900">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+                <p className="text-sm text-green-600 mt-2 font-medium">{item.extra}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. CONTACT FORM (unchanged) */}
-      <section className="py-20 bg-green-50">
+      {/* ==================== CONTACT FORM (modern) ==================== */}
+      <section id="contact-form" className="py-20 bg-green-50">
         <div ref={ref3} className={`max-w-3xl mx-auto px-4 sm:px-6 ${revealClass(vis3)}`}>
-          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 text-center mb-12">
-            Send Us a Message
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 text-center mb-12 flex items-center justify-center gap-3">
+            <Mail className="w-8 h-8 text-green-600" /> Send Us a Message
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 sm:p-10 rounded-2xl shadow-xl">
-            <div>
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-green-100">
+            <div className="relative">
               <input
                 type="text"
                 name="name"
@@ -175,10 +216,13 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-200 focus:border-green-500 focus:ring-2 focus:ring-green-300 outline-none transition-all"
+                className="peer w-full px-4 py-4 pt-6 rounded-xl border border-green-200 bg-transparent focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
               />
+              <label className="absolute left-4 top-2 text-xs text-green-600 font-medium opacity-70 peer-placeholder-shown:opacity-0 peer-focus:opacity-100 transition-opacity">
+                Name
+              </label>
             </div>
-            <div>
+            <div className="relative">
               <input
                 type="email"
                 name="email"
@@ -186,10 +230,13 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-200 focus:border-green-500 focus:ring-2 focus:ring-green-300 outline-none transition-all"
+                className="peer w-full px-4 py-4 pt-6 rounded-xl border border-green-200 bg-transparent focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
               />
+              <label className="absolute left-4 top-2 text-xs text-green-600 font-medium opacity-70 peer-placeholder-shown:opacity-0 peer-focus:opacity-100 transition-opacity">
+                Email
+              </label>
             </div>
-            <div>
+            <div className="relative">
               <textarea
                 name="message"
                 rows="5"
@@ -197,27 +244,30 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-200 focus:border-green-500 focus:ring-2 focus:ring-green-300 outline-none transition-all"
+                className="peer w-full px-4 py-4 pt-6 rounded-xl border border-green-200 bg-transparent focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all resize-none"
               />
+              <label className="absolute left-4 top-2 text-xs text-green-600 font-medium opacity-70 peer-placeholder-shown:opacity-0 peer-focus:opacity-100 transition-opacity">
+                Message
+              </label>
             </div>
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-xl inline-flex items-center justify-center gap-2 shadow-lg transition-colors"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-4 rounded-xl inline-flex items-center justify-center gap-2 shadow-lg transition-colors text-lg"
             >
-              <Send size={18} />
+              <Send size={20} />
               {t('contact.send') || 'Send Message'}
             </button>
           </form>
         </div>
       </section>
 
-      {/* 4. INTERACTIVE MAP (unchanged) */}
+      {/* ==================== INTERACTIVE MAP ==================== */}
       <section className="py-20 bg-white">
         <div ref={ref4} className={`max-w-7xl mx-auto px-4 sm:px-6 ${revealClass(vis4)}`}>
-          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 text-center mb-12">
-            Find Us on the Map
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 text-center mb-12 flex items-center justify-center gap-3">
+            <MapPin className="w-8 h-8 text-green-700" /> Find Us on the Map
           </h2>
-          <div className="rounded-2xl overflow-hidden shadow-lg h-64 sm:h-96">
+          <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-green-200 h-64 sm:h-96">
             <iframe
               title="Forest Explorer Location"
               width="100%"
@@ -244,28 +294,30 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 5. STATS (unchanged) */}
+      {/* ==================== STATS – with animated number ==================== */}
       <section className="py-16 bg-green-800 text-white">
-        <div ref={ref5} className={`max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center ${revealClass(vis5)}`}>
+        <div ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { number: '24/7', label: 'Support' },
-            { number: '< 2hrs', label: 'Response Time' },
-            { number: '100%', label: 'Real Humans' },
-            { number: '∞', label: 'Stories Shared' },
+            { value: '24/7', label: 'Support' },
+            { value: '< 2hrs', label: 'Response Time' },
+            { value: `${count100}%`, label: 'Real Humans' },
+            { value: '∞', label: 'Stories Shared' },
           ].map((stat, i) => (
             <div key={i} className="p-4">
-              <div className="text-4xl md:text-5xl font-bold">{stat.number}</div>
+              <div className="text-4xl md:text-5xl font-bold">
+                {stat.value}
+              </div>
               <div className="mt-2 text-green-200 text-sm uppercase tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 6. TESTIMONIALS – still clickable but only text modal (same as before, simplified) */}
+      {/* ==================== TESTIMONIALS ==================== */}
       <section
         className="py-20 bg-fixed bg-cover bg-center relative"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')`,
+          backgroundImage: `url('./forset2.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-green-900/80" />
@@ -282,7 +334,7 @@ export default function ContactPage() {
               <div
                 key={i}
                 onClick={() => openTestimonialModal(q.text, q.author, i + 3)}
-                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl text-left hover:bg-white/20 transition-colors cursor-pointer group relative"
+                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl text-left hover:bg-white/20 transition-all cursor-pointer group relative border border-transparent hover:border-green-400"
               >
                 <Quote className="text-green-300 mb-4 w-8 h-8" />
                 <p className="text-lg italic mb-4">{q.text}</p>
@@ -296,7 +348,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 7. FAQ PREVIEW (unchanged) */}
+      {/* ==================== FAQ PREVIEW ==================== */}
       <section className="py-20 bg-green-50">
         <div ref={ref7} className={`max-w-4xl mx-auto px-4 sm:px-6 ${revealClass(vis7)}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-900 text-center mb-12">
@@ -308,8 +360,8 @@ export default function ContactPage() {
               { q: 'Can I change my booking?', a: 'Absolutely, just reach out and we’ll adjust it for you.' },
               { q: 'Do you offer group discounts?', a: 'Yes! Contact us for custom group packages.' },
             ].map((item, i) => (
-              <details key={i} className="bg-white rounded-xl p-4 shadow group cursor-pointer">
-                <summary className="font-medium text-green-800 flex justify-between items-center">
+              <details key={i} className="bg-white rounded-xl p-4 shadow group cursor-pointer hover:shadow-md transition-shadow">
+                <summary className="font-medium text-green-800 flex justify-between items-center cursor-pointer">
                   {item.q}
                   <ArrowRight className="w-5 h-5 transition-transform group-open:rotate-90" />
                 </summary>
@@ -325,7 +377,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 8. CTA (unchanged) */}
+      {/* ==================== CTA ==================== */}
       <section
         className="py-20 bg-cover bg-center relative"
         style={{
@@ -334,7 +386,7 @@ export default function ContactPage() {
       >
         <div className="absolute inset-0 bg-green-900/70" />
         <div ref={ref8} className={`relative max-w-4xl mx-auto text-center text-white px-4 ${revealClass(vis8)}`}>
-          <Leaf className="mx-auto w-12 h-12 mb-4 text-green-200" />
+          <Leaf className="mx-auto w-12 h-12 mb-4 text-green-200 animate-float" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             Let’s Start a Conversation
           </h2>
@@ -361,7 +413,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Success Modal (unchanged) */}
+      {/* Success Modal */}
       {successModal && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl p-8 text-center max-w-md w-full">
@@ -400,7 +452,7 @@ export default function ContactPage() {
               className="w-full h-64 sm:h-96 object-cover"
             />
             <div className="p-6">
-              <span className="inline-block text-xs font-medium uppercase tracking-wider text-green-700 bg-green-100 px-2 py-1 rounded-full mb-2">
+              <span className="inline-block text-xs font-medium uppercase tracking-wider text-green-700 bg-green-100 px-3 py-1 rounded-full mb-3">
                 {modalContent.type}
               </span>
               <h3 className="text-2xl font-bold text-gray-800">{modalContent.title}</h3>

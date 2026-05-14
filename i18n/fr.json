@@ -115,5 +115,98 @@
       "hint": "Fermez les yeux. Écoutez le ruisseau, le vent, les ailes."
     },
     "cta_section": { "title": "Commencez Votre Aventure", "cta": "Parler à l'Esprit" }
+  },
+  "legal": {
+    "hero": {
+      "title": "Informations légales et confidentialité",
+      "subtitle": "Notre engagement en faveur de la transparence, vos droits et l'esprit de la forêt."
+    },
+    "terms": {
+      "title": "Conditions d'utilisation",
+      "subtitle": "Veuillez lire attentivement ces conditions avant d'utiliser notre site Web.",
+      "acceptance": {
+        "title": "Acceptation des conditions",
+        "desc": "En accédant à ce site Web, vous acceptez d'être lié par ces conditions.",
+        "long": "En utilisant le site Web Forest Explorer, vous confirmez avoir lu, compris et accepté ces conditions d'utilisation. Si vous n'êtes pas d'accord avec une partie quelconque de ces conditions, vous ne devez pas utiliser nos services. Ces conditions s'appliquent à tous les visiteurs, utilisateurs et autres personnes qui accèdent au site."
+      },
+      "updates": {
+        "title": "Modifications des conditions",
+        "desc": "Nous pouvons modifier ces conditions à tout moment. L'utilisation continue vaut acceptation.",
+        "long": "Forest Explorer se réserve le droit de mettre à jour ou de modifier ces conditions d'utilisation à tout moment sans préavis. Toute modification sera effective immédiatement après sa publication. Votre utilisation continue du site Web après toute modification constitue une acceptation des nouvelles conditions. Nous vous encourageons à consulter cette page périodiquement."
+      },
+      "questions": {
+        "title": "Des questions ?",
+        "desc": "Contactez-nous pour toute clarification concernant nos conditions.",
+        "long": "Si vous avez des questions sur ces conditions d'utilisation, veuillez contacter notre équipe d'assistance via la page de contact. Nous répondrons dans les meilleurs délais, généralement sous 2 à 3 jours ouvrables."
+      },
+      "key_terms_title": "Principales conditions expliquées",
+      "content_use": {
+        "title": "Utilisation du contenu",
+        "short": "Tous les textes, images et médias sont protégés. Ne pas copier ou distribuer sans autorisation.",
+        "long": "Tout le contenu de Forest Explorer — y compris les textes, graphiques, logos, photos et logiciels — est la propriété de Forest Explorer ou de ses fournisseurs de contenu et est protégé par les lois internationales sur le droit d'auteur. Vous pouvez visualiser, télécharger et imprimer les pages pour un usage personnel non commercial uniquement. Toute autre utilisation, y compris la reproduction, la modification, la distribution ou la republication, sans autorisation écrite préalable est strictement interdite."
+      },
+      "conduct": {
+        "title": "Conduite de l'utilisateur",
+        "short": "Respectez la communauté et la nature. Aucune activité illégale ou nuisible n'est autorisée.",
+        "long": "Vous acceptez d'utiliser Forest Explorer uniquement à des fins légales. Vous ne devez pas : (a) publier ou transmettre des éléments nuisibles, harcelants ou diffamatoires ; (b) tenter d'obtenir un accès non autorisé à nos systèmes ; (c) utiliser le site de manière à endommager, désactiver ou altérer nos services ; (d) vous engager dans toute activité perturbant l'expérience des autres utilisateurs. Nous nous réservons le droit de résilier l'accès en cas de violation."
+      },
+      "account": {
+        "title": "Responsabilité du compte",
+        "short": "Vous êtes responsable de la sécurité de vos identifiants de connexion.",
+        "long": "Si vous créez un compte sur Forest Explorer, vous êtes seul responsable de la confidentialité de votre mot de passe et de votre compte, ainsi que de toutes les activités qui se produisent sous votre compte. Vous acceptez de nous informer immédiatement de toute utilisation non autorisée. Nous ne sommes pas responsables des pertes ou dommages résultant de votre incapacité à protéger les informations de votre compte."
+      }
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "subtitle": "Vos données sont en sécurité chez nous — comme une clairière cachée dans la forêt.",
+      "no_agendas": {
+        "title": "Pas d'agendas cachés",
+        "desc": "Nous ne vendons jamais vos données personnelles à des tiers. Jamais.",
+        "long": "Votre vie privée n'est pas à vendre. Forest Explorer ne loue, ne vend ni ne partage vos informations personnelles avec des tiers à des fins marketing. Toutes les données collectées sont uniquement utilisées pour améliorer votre expérience, répondre à vos demandes et maintenir nos services. Nous croyons en une relation transparente avec nos visiteurs."
+      },
+      "protection": {
+        "title": "Protection renforcée",
+        "desc": "Nous utilisons des mesures de sécurité conformes aux normes de l'industrie pour protéger vos données.",
+        "long": "Nous mettons en œuvre diverses technologies et procédures de sécurité pour protéger vos informations personnelles contre tout accès, utilisation ou divulgation non autorisés. Cela inclut les connexions cryptées (SSL/TLS), les pare-feu et les audits de sécurité réguliers. Cependant, aucune méthode de transmission sur Internet n'est sécurisée à 100 % et nous ne pouvons garantir une sécurité absolue."
+      },
+      "transparency": {
+        "title": "Transparence totale",
+        "desc": "Vous pouvez demander une copie de toutes les données que nous détenons à votre sujet à tout moment.",
+        "long": "Nous pensons que vous devez toujours savoir quelles informations nous avons sur vous. Vous avez le droit de demander l'accès, la correction ou la suppression de vos données personnelles. Contactez-nous via le formulaire sur la page de contact, et nous répondrons dans les 30 jours. Nous ne demanderons jamais d'autorisations inutiles ni ne collecterons de données sans objectif clair."
+      },
+      "collect_title": "Quelles informations nous collectons",
+      "personal": {
+        "title": "Informations personnelles",
+        "short": "Nom, e-mail et messages que vous nous envoyez.",
+        "long": "Lorsque vous nous contactez, vous inscrivez à une lettre d'information (si disponible) ou utilisez certaines fonctionnalités, nous pouvons demander des détails personnels tels que votre nom, votre adresse e-mail et tout message que vous choisissez d'envoyer. Ces informations sont utilisées uniquement pour répondre à vos demandes ou fournir le service demandé. Nous ne stockons pas les informations de paiement."
+      },
+      "browsing": {
+        "title": "Données de navigation",
+        "short": "Statistiques d'utilisation anonymes pour améliorer notre site.",
+        "long": "Comme la plupart des sites Web, nous collectons des données non personnelles telles que votre adresse IP (anonymisée), le type de navigateur, les pages visitées, le temps passé et les URL de référence. Ces informations nous aident à comprendre comment les visiteurs utilisent Forest Explorer afin d'optimiser le contenu et de résoudre les problèmes techniques. Elles ne vous identifient jamais personnellement."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "short": "Petits fichiers qui mémorisent vos préférences.",
+        "long": "Nous utilisons des cookies essentiels pour activer les fonctionnalités de base (par exemple, la préférence de langue, l'état de connexion). Vous pouvez désactiver les cookies dans les paramètres de votre navigateur, mais certaines parties du site pourraient ne pas fonctionner correctement. Nous n'utilisons pas de cookies de suivi d'annonceurs tiers. Nos cookies rendent simplement votre voyage à travers la forêt plus fluide."
+      }
+    },
+    "stats": {
+      "encrypted": "Chiffré",
+      "data_sold": "Données vendues",
+      "monitoring": "Surveillance quotidienne",
+      "trust": "Confiance"
+    },
+    "still_unsure": {
+      "title": "Vous avez encore des questions ?",
+      "desc": "Nous sommes là pour vous aider à explorer en toute sécurité. Contactez-nous à tout moment.",
+      "contact": "Nous contacter",
+      "ask_spirit": "Interroger l'Esprit de la Forêt"
+    },
+    "cta": {
+      "title": "Marchez en toute confiance",
+      "desc": "Votre aventure vous attend — et vos droits sont toujours protégés.",
+      "button": "Commencer l'exploration"
+    }
   }
 }

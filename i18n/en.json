@@ -9,7 +9,8 @@
     "faq": "FAQ",
     "privacy": "Privacy Policy",
     "terms": "Terms",
-    "language": "Language"
+    "language": "Language",
+    "legal": "Legal"
   },
   "hero": {
     "title": "Discover the Living Forest",
@@ -115,5 +116,98 @@
       "hint": "Close your eyes. Hear the stream, the wind, the wings."
     },
     "cta_section": { "title": "Begin Your Adventure", "cta": "Talk to Spirit" }
+  },
+  "legal": {
+    "hero": {
+      "title": "Legal & Privacy",
+      "subtitle": "Your rights, our promises — everything you need to know about using the forest responsibly."
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "subtitle": "By exploring our forest, you agree to walk gently and respect these guidelines.",
+      "acceptance": {
+        "title": "Acceptance",
+        "desc": "By using this website, you accept these terms in full.",
+        "long": "Your continued use of our site means you agree to these terms. If you disagree, please discontinue use."
+      },
+      "updates": {
+        "title": "Updates",
+        "desc": "We may revise these terms at any time. Continued use means you accept changes.",
+        "long": "We will post the updated terms on this page. Changes are effective immediately upon posting."
+      },
+      "questions": {
+        "title": "Questions?",
+        "desc": "If anything is unclear, reach out before continuing.",
+        "long": "Our team is happy to clarify any part of these terms. Contact us via the Contact page."
+      },
+      "key_terms_title": "Key Terms & Conditions",
+      "content_use": {
+        "title": "Use of Content",
+        "short": "All content is for personal, non‑commercial use only.",
+        "long": "Text, images, and graphics on this website are protected by copyright. You may not reproduce, distribute, or use them commercially without written permission. Sharing with credit is welcome!"
+      },
+      "conduct": {
+        "title": "User Conduct",
+        "short": "Respect the forest and fellow explorers.",
+        "long": "You agree not to post harmful, offensive, or illegal content. We reserve the right to remove any user submissions that violate these standards."
+      },
+      "account": {
+        "title": "Account Responsibility",
+        "short": "You are responsible for keeping your credentials safe.",
+        "long": "If you create an account, you must provide accurate information and keep your password confidential. Notify us immediately of any unauthorized use."
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "subtitle": "Your trust is rooted in our transparency. Learn how we protect your data.",
+      "no_agendas": {
+        "title": "No Hidden Agendas",
+        "desc": "We never sell, rent, or share your personal information without consent.",
+        "long": "Your privacy is our priority. We do not engage in any data-selling practices. All personal data collected is used solely for the purpose you provided it."
+      },
+      "protection": {
+        "title": "Data Protection",
+        "desc": "Your information is encrypted and stored securely using industry standards.",
+        "long": "We use industry-standard encryption (SSL) to protect data in transit and at rest. Our servers are regularly audited for security vulnerabilities."
+      },
+      "transparency": {
+        "title": "Full Transparency",
+        "desc": "You can request a copy of your data anytime, or ask us to delete it.",
+        "long": "Under GDPR and other privacy regulations, you have the right to access, correct, or delete your personal data. Simply contact us to exercise these rights."
+      },
+      "collect_title": "Information We Collect",
+      "personal": {
+        "title": "Personal Details",
+        "short": "Your name and email when you contact us or book a tour.",
+        "long": "When you send a message or make a booking, we collect your name and email address solely to respond to your request. We never use this information for marketing unless you explicitly agree."
+      },
+      "browsing": {
+        "title": "Browsing Data",
+        "short": "Anonymous analytics about how you use our site to improve it.",
+        "long": "We collect anonymous browsing data — pages visited, time spent, and device type — through privacy‑focused analytics. This helps us improve your experience without identifying you personally."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "short": "Small files that remember your preferences (you can disable them).",
+        "long": "Our website uses minimal cookies to save your language preference and theme choice. These cookies do not track you across other sites. You can disable cookies in your browser settings."
+      }
+    },
+    "stats": {
+      "encrypted": "Encrypted",
+      "data_sold": "Data Sold",
+      "monitoring": "Monitoring",
+      "trust": "Trust"
+    },
+    "still_unsure": {
+      "title": "Something Unclear?",
+      "desc": "Our rangers are happy to explain anything. Just drop us a message.",
+      "contact": "Contact Us",
+      "ask_spirit": "Ask the Spirit"
+    },
+    "cta": {
+      "title": "Now That You Know the Rules…",
+      "desc": "Step into the forest with confidence, knowing your rights and our promises.",
+      "button": "Explore Freely"
+    }
   }
 }

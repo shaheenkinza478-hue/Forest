@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import Card from '@/components/ui/Card';
 import { allItems } from '@/data/forestData';
-import FloatingLeaves from '@/components/common/FloatingLeaves';   // ← نئی امپورٹ
+import FloatingLeaves from '@/components/common/FloatingLeaves';
 import {
   ArrowRight,
   Quote,
@@ -81,8 +81,6 @@ function useTypewriter(phrases, typingSpeed = 100, deletingSpeed = 50, pauseTime
   return displayedText;
 }
 
-// ❌ مقامی FloatingLeaves ہٹا دیا گیا – اب اوپر سے امپورٹ ہے
-
 export default function HomePage() {
   const { t } = useLanguage();
 
@@ -102,7 +100,6 @@ export default function HomePage() {
   const openCard = (item) => setModalContent({ image: item.image, title: item.name, type: item.type, desc: item.description });
   const closeModal = () => { setModalOpen(false); setModalContent(null); };
 
-  // 🔁 اب جنرک کارڈز کے لئے کوئی تصویر نہیں بھیجی جائے گی
   const openGenericCard = (title, desc, type) => {
     setModalContent({ title, type, desc });
     setModalOpen(true);
@@ -160,7 +157,7 @@ export default function HomePage() {
           </p>
           <div className="mt-10">
             <Link href={ROUTES.EXPLORE}>
-              <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-2xl transition-transform hover:scale-105">
+              <button className="inline-flex items-center gap-2 bg-green-800 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-2xl transition-transform hover:scale-105">
                 {t('home_sections.hero.cta') || 'Start Exploring'} <ArrowRight size={20} />
               </button>
             </Link>
@@ -168,7 +165,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. WHY CHOOSE THE WILD */}
+      {/* 2. WHY CHOOSE THE WILD - Eye icon removed */}
       <section className="py-20 bg-gradient-to-b from-green-50 to-white">
         <div ref={ref2} className={`max-w-7xl mx-auto px-4 text-center ${revealClass(vis2)}`}>
           <h2 className="text-4xl font-bold text-green-900 mb-12">
@@ -186,16 +183,14 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-800">{card.title}</h3>
                 <p className="mt-4 text-gray-600">{card.desc}</p>
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-2xl transition-opacity">
-                  <Eye className="w-8 h-8 text-green-800 drop-shadow-lg" />
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. MEET THE FOREST ANIMALS */}
+      {/* 3. MEET THE FOREST ANIMALS - Eye overlay removed */}
       <section
         className="py-20 bg-fixed bg-cover bg-center relative"
         style={{
@@ -218,11 +213,7 @@ export default function HomePage() {
                 className="cursor-pointer group relative"
               >
                 <Card item={item} />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                  <div className="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg">
-                    <Eye className="w-6 h-6 text-green-800" />
-                  </div>
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
@@ -236,7 +227,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. SYMPHONY OF BIRDS (جانوروں کی طرح تصویری موڈل) */}
+      {/* 4. SYMPHONY OF BIRDS - Eye overlay removed */}
       <section className="py-20 bg-white">
         <div ref={ref4} className={`max-w-7xl mx-auto px-4 text-center ${revealClass(vis4)}`}>
           <h2 className="text-4xl font-bold text-green-900 mb-4">
@@ -253,18 +244,14 @@ export default function HomePage() {
                 className="cursor-pointer group relative"
               >
                 <Card item={item} />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                  <div className="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg">
-                    <Eye className="w-6 h-6 text-green-800" />
-                  </div>
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. REALM OF PLANTS */}
+      {/* 5. REALM OF PLANTS - Eye overlay removed */}
       <section className="py-20 bg-gradient-to-t from-green-100 to-white">
         <div ref={ref5} className={`max-w-7xl mx-auto px-4 text-center ${revealClass(vis5)}`}>
           <h2 className="text-4xl font-bold text-green-900 mb-4">
@@ -281,18 +268,14 @@ export default function HomePage() {
                 className="cursor-pointer group relative"
               >
                 <Card item={item} />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                  <div className="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg">
-                    <Eye className="w-6 h-6 text-green-800" />
-                  </div>
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. SERVICES (بغیر تصویر والا موڈل) */}
+      {/* 6. SERVICES - Eye overlay removed */}
       <section className="py-20 bg-green-50">
         <div ref={ref6} className={`max-w-7xl mx-auto px-4 text-center ${revealClass(vis6)}`}>
           <h2 className="text-4xl font-bold text-green-900 mb-12">
@@ -310,16 +293,14 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800">{svc.title}</h3>
                 <p className="mt-2 text-gray-600">{svc.desc}</p>
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-2xl transition-opacity">
-                  <Eye className="w-8 h-8 text-green-800 drop-shadow-lg" />
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. TESTIMONIALS (بغیر تصویر) */}
+      {/* 7. TESTIMONIALS - Eye overlay removed */}
       <section
         className="py-20 bg-fixed bg-cover bg-center relative"
         style={{
@@ -341,9 +322,7 @@ export default function HomePage() {
                 <Quote className="text-green-300 mb-4" size={30} />
                 <p className="text-xl italic mb-4">{q.text}</p>
                 <p className="font-semibold">– {q.author}</p>
-                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-2xl transition-opacity">
-                  <Eye className="w-8 h-8 text-white drop-shadow-lg" />
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
@@ -372,7 +351,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. SUNLIT CANOPY (فوٹو گیلری – یہ تصاویر والا موڈل رہے گا) */}
+      {/* 10. SUNLIT CANOPY - image gallery with Eye overlay removed */}
       <section className="py-20 bg-white">
         <div ref={ref10} className={`max-w-7xl mx-auto px-4 ${revealClass(vis10)}`}>
           <div className="text-center mb-12">
@@ -393,16 +372,14 @@ export default function HomePage() {
                 className="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer group relative"
               >
                 <img src={url} alt="Canopy" className="w-full h-72 object-cover" />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                  <Eye className="w-8 h-8 text-white drop-shadow-lg" />
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 11. ADVENTURER'S KIT (بغیر تصویر) */}
+      {/* 11. ADVENTURER'S KIT - Eye overlay removed */}
       <section className="py-20 bg-green-50">
         <div ref={ref11} className={`max-w-5xl mx-auto px-4 ${revealClass(vis11)}`}>
           <div className="text-center mb-12">
@@ -426,9 +403,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-gray-800 text-lg">{kit.item}</h3>
                 <p className="text-sm text-gray-600 mt-2">{kit.desc}</p>
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-2xl transition-opacity">
-                  <Eye className="w-6 h-6 text-green-800 drop-shadow-lg" />
-                </div>
+                {/* Eye icon overlay removed */}
               </div>
             ))}
           </div>
@@ -472,7 +447,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- موڈل (جنرک کارڈز کے لئے بغیر تصویر) ---------- */}
+      {/* Modal - same as before, no changes */}
       {modalOpen && modalContent && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
@@ -489,7 +464,6 @@ export default function HomePage() {
               <X size={24} className="text-green-800" />
             </button>
 
-            {/* صرف اس صورت میں تصویر دکھائیں جب modalContent.image موجود ہو */}
             {modalContent.image ? (
               <>
                 <img
@@ -506,7 +480,6 @@ export default function HomePage() {
                 </div>
               </>
             ) : (
-              /* بغیر تصویر والا موڈل */
               <div className="p-8">
                 <span className="inline-block text-xs font-medium uppercase tracking-wider text-green-700 bg-green-100 px-2 py-1 rounded-full mb-3">
                   {modalContent.type || 'Detail'}

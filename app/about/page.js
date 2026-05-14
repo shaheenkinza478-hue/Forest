@@ -56,13 +56,57 @@ export default function AboutPage() {
       visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
     }`;
 
+  // ---- Animated counters for STATS ----
+  const [counts, setCounts] = useState([0, 0, 0, 100]);
+  const statsRef = useRef(null);
+  const hasStartedRef = useRef(false);
+
+  useEffect(() => {
+    const node = statsRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStartedRef.current) {
+          hasStartedRef.current = true;
+          // Target values: 25000, 60, 15, 100
+          const targets = [25000, 60, 15, 100];
+          let step = 0;
+          const totalSteps = 50;  // ~2 seconds smooth animation
+          const interval = setInterval(() => {
+            step++;
+            const progress = step / totalSteps;
+            const newCounts = targets.map((t) => Math.min(Math.round(t * progress), t));
+            setCounts(newCounts);
+            if (step >= totalSteps) {
+              clearInterval(interval);
+              setCounts(targets);
+            }
+          }, 40);
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  // Display logic for final formatted strings
+  const displayValues = [
+    counts[0] >= 25000 ? '25K+' : (counts[0] / 1000).toFixed(0) + 'K+',
+    counts[1] + '+',
+    counts[2],
+    counts[3] + '%',
+  ];
+
   return (
     <div className="bg-white text-gray-800">
       {/* 1. HERO */}
       <section
         className="relative flex items-center justify-center min-h-screen bg-fixed bg-cover bg-center overflow-hidden"
         style={{
-          backgroundImage: `url('./forest3.jpg')`,
+          backgroundImage: `url('./forsettt.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
@@ -77,7 +121,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. OUR MISSION – smooth green hover */}
+      {/* 2. OUR MISSION – no images (unchanged) */}
       <section className="py-20 bg-white">
         <div ref={ref2} className={`max-w-7xl mx-auto px-4 sm:px-6 text-center ${revealClass(vis2)}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-12">
@@ -102,7 +146,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. WHAT WE DO – smooth green hover */}
+      {/* 3. WHAT WE DO – now with HD images */}
       <section
         className="py-20 bg-fixed bg-cover bg-center relative"
         style={{
@@ -122,26 +166,35 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Mountain, title: 'Trail Restoration', desc: 'Rebuilding paths that let you explore without harming nature.' },
-              { icon: Sun, title: 'Wildlife Monitoring', desc: 'Using camera traps and citizen science to track forest health.' },
-              { icon: Network, title: 'Tree Planting', desc: 'Thousands of saplings planted each year to regrow lost forests.' },
+              { icon: Mountain, title: 'Trail Restoration', desc: 'Rebuilding paths that let you explore without harming nature.', img: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+              { icon: Sun, title: 'Wildlife Monitoring', desc: 'Using camera traps and citizen science to track forest health.', img: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+              { icon: Network, title: 'Tree Planting', desc: 'Thousands of saplings planted each year to regrow lost forests.', img: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl border border-transparent hover:border-green-400 hover:bg-green-50 transition-all duration-300 group"
+                className="bg-white rounded-2xl shadow-lg hover:shadow-xl border border-transparent hover:border-green-400 transition-all duration-300 group overflow-hidden"
               >
-                <div className="text-green-600 mb-4 flex justify-center">
-                  <item.icon size={40} />
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 group-hover:text-green-700">{item.title}</h3>
-                <p className="mt-2 text-gray-600 group-hover:text-gray-800">{item.desc}</p>
+                <div className="p-6 text-center">
+                  <div className="text-green-600 mb-3 flex justify-center">
+                    <item.icon size={36} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 group-hover:text-green-700">{item.title}</h3>
+                  <p className="mt-2 text-gray-600 group-hover:text-gray-800">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. OUR VALUES – smooth green hover */}
+      {/* 4. OUR VALUES – now with small HD images */}
       <section className="py-20 bg-green-50">
         <div ref={ref4} className={`max-w-7xl mx-auto px-4 sm:px-6 text-center ${revealClass(vis4)}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-12">
@@ -149,42 +202,48 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Shield, title: 'Respect', desc: 'We tread lightly and honor every living creature.' },
-              { icon: Award, title: 'Integrity', desc: 'Science and honesty guide every decision.' },
-              { icon: Users, title: 'Community', desc: 'Together we can protect what we love.' },
-              { icon: Clock, title: 'Patience', desc: 'Nature moves at its own pace, and so do we.' },
+              { icon: Shield, title: 'Respect', desc: 'We tread lightly and honor every living creature.', img: './forest3.jpg' },
+              { icon: Award, title: 'Integrity', desc: 'Science and honesty guide every decision.', img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
+              { icon: Users, title: 'Community', desc: 'Together we can protect what we love.', img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
+              { icon: Clock, title: 'Patience', desc: 'Nature moves at its own pace, and so do we.', img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg border border-transparent hover:border-green-400 hover:bg-green-100 transition-all duration-300 group"
+                className="bg-white rounded-2xl shadow-md hover:shadow-lg border border-transparent hover:border-green-400 hover:bg-green-100 transition-all duration-300 group overflow-hidden"
               >
-                <item.icon className="mx-auto text-green-700 w-10 h-10 mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-semibold text-gray-800 group-hover:text-green-900">{item.title}</h3>
-                <p className="mt-2 text-gray-600 text-sm group-hover:text-gray-800">{item.desc}</p>
+                <div className="h-40 overflow-hidden">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-5 text-center">
+                  <item.icon className="mx-auto text-green-700 w-8 h-8 mb-3 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-lg font-semibold text-gray-800 group-hover:text-green-900">{item.title}</h3>
+                  <p className="mt-2 text-gray-600 text-sm group-hover:text-gray-800">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. STATS */}
+      {/* 5. STATS – ANIMATED COUNTERS (COUNTDOWN STYLE) */}
       <section className="py-16 bg-green-800 text-white">
-        <div ref={ref5} className={`max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center ${revealClass(vis5)}`}>
-          {[
-            { number: '25K+', label: 'Trees Planted' },
-            { number: '60+', label: 'Guided Tours' },
-            { number: '15', label: 'Countries' },
-            { number: '100%', label: 'Passion' },
-          ].map((stat, i) => (
+        <div ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {['Trees Planted', 'Guided Tours', 'Countries', 'Passion'].map((label, i) => (
             <div key={i} className="p-4">
-              <div className="text-4xl md:text-5xl font-bold">{stat.number}</div>
-              <div className="mt-2 text-green-200 text-sm uppercase tracking-wider">{stat.label}</div>
+              <div className="text-4xl md:text-5xl font-bold">
+                {displayValues[i]}
+              </div>
+              <div className="mt-2 text-green-200 text-sm uppercase tracking-wider">{label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 6. MEET THE TEAM – smooth green hover on card */}
+      {/* 6. MEET THE TEAM (unchanged) */}
       <section className="py-20 bg-white">
         <div ref={ref6} className={`max-w-7xl mx-auto px-4 sm:px-6 text-center ${revealClass(vis6)}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-12">
@@ -193,8 +252,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { name: 'Elena Woods', role: 'Founder', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-              { name: 'Marcus Fern', role: 'Head Ranger', img: ' ./Marcus Fern.jpg' },
-              { name: 'Aria Moss', role: 'Educator', img: ' ./Aria Moss.jpg' },
+              { name: 'Marcus Fern', role: 'Head Ranger', img: './Marcus Fern.jpg' },
+              { name: 'Aria Moss', role: 'Educator', img: './Aria Moss.jpg' },
               { name: 'Leo Stone', role: 'Conservationist', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
             ].map((person, i) => (
               <div
@@ -219,7 +278,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. TIMELINE */}
+      {/* 7. TIMELINE (unchanged) */}
       <section
         className="py-20 bg-fixed bg-cover bg-center relative"
         style={{
@@ -247,7 +306,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 8. QUOTE */}
+      {/* 8. QUOTE (unchanged) */}
       <section className="py-20 bg-white">
         <div ref={ref8} className={`max-w-3xl mx-auto text-center px-4 ${revealClass(vis8)}`}>
           <Quote className="mx-auto text-green-300 w-12 h-12 mb-6" />
@@ -258,7 +317,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 9. CTA */}
+      {/* 9. CTA (unchanged) */}
       <section
         className="py-20 bg-cover bg-center relative"
         style={{

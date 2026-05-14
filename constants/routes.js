@@ -6,6 +6,7 @@ export const ROUTES = {
   SERVICES: '/services',
   CONTACT: '/contact',
   FAQ: '/faq',
-  PRIVACY: '/privacy-policy',
-  TERMS: '/terms',
+  TERMS: '/legal',
+  PRIVACY: '/legal',
+  LEGAL: '/legal',
 };
