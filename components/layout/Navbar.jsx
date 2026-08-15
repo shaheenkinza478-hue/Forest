@@ -118,13 +118,21 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 w-full bg-green-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - with professional TreePine icon */}
+          {/* Logo - Image + Text (text hidden on mobile) */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity cursor-pointer"
+            className="flex items-center gap-2 font-bold hover:opacity-80 transition-opacity cursor-pointer"
           >
-            <TreePine size={24} className="text-green-200" />
-            <span className="hidden sm:inline">Forest Explorer</span>
+            {/* Logo Image */}
+            <img
+              src="/f.png" // Apni image ka path yahan daalein
+              alt="Forest Explorer Logo"
+              className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+            />
+            {/* Text - hidden on mobile, shown on sm and above */}
+            <span className="hidden sm:inline text-xl sm:text-2xl font-bold tracking-wide text-green-200">
+              Forest Explorer
+            </span>
           </Link>
 
           <div className="flex items-center gap-2">
