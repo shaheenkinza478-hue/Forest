@@ -88,17 +88,18 @@ export default function FloatingChat() {
 
   return (
     <>
-      {/* Floating Chat Button */}
+      {/* Floating Chat Button - responsive size */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-green-800 to-emerald-500 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-green-500/50"
+        className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-green-800 to-emerald-500 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-green-500/50"
       >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <X size={20} className="sm:hidden" /> : <MessageCircle size={20} className="sm:hidden" />}
+        {isOpen ? <X size={24} className="hidden sm:block" /> : <MessageCircle size={24} className="hidden sm:block" />}
       </button>
 
-      {/* Chat Window - bottom right, slides up */}
+      {/* Chat Window - corner position, responsive width */}
       <div
-        className={`fixed bottom-24 right-6 z-50 w-96 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-green-200 transition-all duration-300 ${
+        className={`fixed bottom-0 right-0 sm:bottom-2 sm:right-2 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-green-200 transition-all duration-300 ${
           isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
         style={{ height: '500px', maxHeight: '70vh' }}
@@ -131,7 +132,7 @@ export default function FloatingChat() {
                   <Leaf size={16} className="text-green-700" />
                 </div>
               )}
-              <div className={`max-w-[75%] px-4 py-2 rounded-2xl text-sm ${
+              <div className={`max-w-[80%] sm:max-w-[75%] px-4 py-2 rounded-2xl text-sm ${
                 msg.isUser
                   ? 'bg-green-600 text-white rounded-br-none'
                   : 'bg-white border border-green-200 text-green-800 rounded-bl-none shadow-sm'
@@ -162,8 +163,8 @@ export default function FloatingChat() {
           )}
         </div>
 
-        {/* Input */}
-        <div className="border-t border-green-100 p-3 flex gap-2 bg-white">
+        {/* Input - responsive padding */}
+        <div className="border-t border-green-100 p-3 sm:p-3 flex gap-2 bg-white">
           <input
             ref={inputRef}
             type="text"
@@ -171,7 +172,7 @@ export default function FloatingChat() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask about forests, animals..."
-            className="flex-1 rounded-xl border border-green-200 bg-white px-4 py-2 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="flex-1 rounded-xl border border-green-200 bg-white px-3 sm:px-4 py-2 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
           />
           <button
             onClick={handleSend}
